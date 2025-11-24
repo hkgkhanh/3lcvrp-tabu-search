@@ -1,0 +1,135 @@
+Instance: 3l_cvrp11.txt
+Total Distance: 1024.56
+============================================================
+
+VEHICLE 0
+Route: 0 -> 28 -> 27 -> 25 -> 2 -> 20 -> 0
+Route Length: 190.03
+Load Weight: 4449.99 / 4500.0
+Load Length: 56.00 / 60
+Packed Items Count: 9
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+20000      20       0     0     0     7x13x28         NO
+2000       2        0     13    0     7x17x35         NO
+2001       2        7     0     0     8x17x27         NO
+25000      25       15    0     0     9x17x36         NO
+27000      27       0     0     28    14x7x28         NO
+27001      27       0     7     35    7x10x21         NO
+27002      27       7     17    0     10x8x16         NO
+28000      28       7     7     27    5x13x28         NO
+28001      28       0     17    35    6x10x21         NO
+
+VEHICLE 1
+Route: 0 -> 21 -> 17 -> 0
+Route Length: 117.08
+Load Weight: 1599.99 / 4500.0
+Load Length: 60.00 / 60
+Packed Items Count: 4
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+17000      17       0     0     0     13x8x25         NO
+17001      17       0     8     0     9x9x30          NO
+17002      17       9     0     25    13x15x35        YES
+21000      21       0     17    0     7x13x24         NO
+
+VEHICLE 2
+Route: 0 -> 22 -> 4 -> 6 -> 0
+Route Length: 122.98
+Load Weight: 349.99 / 4500.0
+Load Length: 58.00 / 60
+Packed Items Count: 7
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+6000       6        0     0     0     10x10x31        NO
+6001       6        0     10    0     10x8x26         YES
+6002       6        0     18    0     5x9x23          YES
+4000       4        0     0     31    10x7x26         NO
+22000      22       10    0     0     10x18x35        NO
+22001      22       10    18    0     12x6x34         NO
+22002      22       0     7     31    6x14x27         NO
+
+VEHICLE 3
+Route: 0 -> 15 -> 13 -> 7 -> 9 -> 23 -> 0
+Route Length: 123.96
+Load Weight: 1450.00 / 4500.0
+Load Length: 50.00 / 60
+Packed Items Count: 9
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+23000      23       0     0     0     10x14x12        NO
+23001      23       0     0     12    12x9x21         YES
+9000       9        0     14    0     10x7x14         NO
+9001       9        0     21    0     7x9x13          YES
+7000       7        12    0     0     7x12x21         NO
+13000      13       12    0     21    13x16x27        NO
+13001      13       10    12    0     9x15x17         NO
+15000      15       12    16    17    11x10x33        NO
+15001      15       0     9     17    12x12x20        YES
+
+VEHICLE 4
+Route: 0 -> 29 -> 24 -> 1 -> 5 -> 0
+Route Length: 152.51
+Load Weight: 1999.99 / 4500.0
+Load Length: 60.00 / 60
+Packed Items Count: 8
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+5000       5        0     0     0     14x10x32        NO
+5001       5        0     10    0     15x11x24        NO
+1000       1        0     0     32    11x16x28        NO
+24000      24       0     21    0     8x9x20          NO
+24001      24       0     16    32    11x14x19        YES
+29000      29       11    0     32    12x11x26        NO
+29001      29       14    0     0     9x9x30          NO
+29002      29       11    11    30    7x10x29         NO
+
+VEHICLE 5
+Route: 0 -> 19 -> 3 -> 26 -> 18 -> 0
+Route Length: 133.32
+Load Weight: 974.99 / 4500.0
+Load Length: 52.00 / 60
+Packed Items Count: 7
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+18000      18       0     0     0     14x16x34        NO
+18001      18       0     0     34    13x16x16        NO
+26000      26       14    0     0     9x15x34         NO
+3000       3        0     16    0     10x13x31        NO
+19000      19       14    15    0     11x8x35         NO
+19001      19       0     16    31    14x14x14        YES
+19002      19       13    0     34    9x8x18          YES
+
+VEHICLE 7
+Route: 0 -> 10 -> 16 -> 11 -> 0
+Route Length: 95.06
+Load Weight: 1200.01 / 4500.0
+Load Length: 59.00 / 60
+Packed Items Count: 7
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+11000      11       0     0     0     10x9x34         NO
+11001      11       0     9     0     5x11x18         NO
+11002      11       0     0     34    8x14x25         YES
+16000      16       10    0     0     13x14x34        NO
+16001      16       8     0     34    7x7x21          NO
+10000      10       8     14    0     11x7x27         NO
+10001      10       0     14    34    9x16x17         YES
+
+VEHICLE 9
+Route: 0 -> 14 -> 8 -> 12 -> 0
+Route Length: 89.62
+Load Weight: 725.01 / 4500.0
+Load Length: 59.00 / 60
+Packed Items Count: 7
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+12000      12       0     0     0     14x18x34        NO
+12001      12       0     18    0     14x11x23        NO
+12002      12       14    0     0     9x14x29         YES
+8000       8        0     0     34    8x14x24         NO
+8001       8        14    0     29    10x7x30         NO
+8002       8        0     14    34    7x11x19         NO
+14000      14       14    7     29    9x16x14         NO
+
+============================================================

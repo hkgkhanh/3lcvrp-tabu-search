@@ -1,0 +1,291 @@
+Instance: 3l_cvrp24.txt
+Total Distance: 2307.16
+============================================================
+
+VEHICLE 0
+Route: 0 -> 56 -> 52 -> 14 -> 54 -> 0
+Route Length: 151.29
+Load Weight: 91.99 / 100.0
+Load Length: 120.00 / 60
+Packed Items Count: 0
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+(NO FEASIBLE PACKING FOUND FOR THIS ROUTE CONFIGURATION)
+
+VEHICLE 1
+Route: 0 -> 40 -> 18 -> 3 -> 0
+Route Length: 71.91
+Load Weight: 57.00 / 100.0
+Load Length: 120.00 / 60
+Packed Items Count: 0
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+(NO FEASIBLE PACKING FOUND FOR THIS ROUTE CONFIGURATION)
+
+VEHICLE 2
+Route: 0 -> 16 -> 7 -> 0
+Route Length: 65.76
+Load Weight: 33.99 / 100.0
+Load Length: 56.00 / 60
+Packed Items Count: 6
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+7000       7        0     0     0     10x18x21        NO
+7001       7        0     0     21    9x11x32         NO
+7002       7        0     11    21    7x12x33         NO
+16000      16       9     0     21    15x16x35        NO
+16001      16       10    0     0     14x18x12        NO
+16002      16       7     18    0     13x6x12         NO
+
+VEHICLE 3
+Route: 0 -> 28 -> 5 -> 59 -> 0
+Route Length: 129.82
+Load Weight: 74.01 / 100.0
+Load Length: 54.00 / 60
+Packed Items Count: 6
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+59000      59       0     0     0     14x11x31        NO
+5000       5        0     11    0     12x16x32        NO
+5001       5        0     0     32    9x13x22         YES
+28000      28       14    0     0     11x14x30        NO
+28001      28       9     0     31    14x11x21        NO
+28002      28       12    14    0     13x7x33         NO
+
+VEHICLE 4
+Route: 0 -> 19 -> 45 -> 6 -> 0
+Route Length: 71.73
+Load Weight: 54.99 / 100.0
+Load Length: 59.00 / 60
+Packed Items Count: 9
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+6000       6        0     0     0     11x17x17        NO
+6001       6        0     0     17    13x14x13        NO
+6002       6        0     0     30    12x15x18        YES
+45000      45       13    0     0     11x13x26        NO
+45001      45       13    13    0     12x7x24         NO
+45002      45       0     15    24    9x15x24         YES
+19000      19       13    0     26    8x17x33         NO
+19001      19       11    17    26    10x11x29        NO
+19002      19       11    20    0     14x8x22         NO
+
+VEHICLE 5
+Route: 0 -> 72 -> 66 -> 8 -> 0
+Route Length: 88.56
+Load Weight: 53.99 / 100.0
+Load Length: 60.00 / 60
+Packed Items Count: 7
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+8000       8        0     0     0     9x18x24         NO
+8001       8        0     18    0     7x12x23         NO
+66000      66       0     0     24    11x11x14        NO
+66001      66       0     0     38    14x14x22        YES
+66002      66       9     0     0     15x17x14        YES
+72000      72       14    0     14    10x16x36        NO
+72001      72       14    16    14    7x13x29         NO
+
+VEHICLE 6
+Route: 0 -> 34 -> 35 -> 26 -> 0
+Route Length: 41.82
+Load Weight: 46.98 / 100.0
+Load Length: 120.00 / 60
+Packed Items Count: 0
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+(NO FEASIBLE PACKING FOUND FOR THIS ROUTE CONFIGURATION)
+
+VEHICLE 7
+Route: 0 -> 21 -> 39 -> 32 -> 0
+Route Length: 109.17
+Load Weight: 71.98 / 100.0
+Load Length: 56.00 / 60
+Packed Items Count: 7
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+32000      32       0     0     0     7x7x29          NO
+39000      39       0     0     29    12x13x27        NO
+39001      39       0     13    29    10x7x21         NO
+39002      39       0     7     0     6x17x14         NO
+21000      21       12    0     0     12x13x14        NO
+21001      21       0     20    29    10x10x21        NO
+21002      21       12    0     14    11x12x33        YES
+
+VEHICLE 8
+Route: 0 -> 60 -> 73 -> 23 -> 0
+Route Length: 133.20
+Load Weight: 24.99 / 100.0
+Load Length: 59.00 / 60
+Packed Items Count: 7
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+23000      23       0     0     0     12x16x24        NO
+73000      73       0     16    0     10x10x22        NO
+73001      73       0     0     24    11x12x34        YES
+73002      73       0     12    24    6x6x30          YES
+60000      60       11    0     24    13x9x35         NO
+60001      60       11    9     24    7x15x27         NO
+60002      60       18    9     22    7x7x25          NO
+
+VEHICLE 9
+Route: 0 -> 38 -> 49 -> 61 -> 0
+Route Length: 145.98
+Load Weight: 44.01 / 100.0
+Load Length: 49.00 / 60
+Packed Items Count: 7
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+61000      61       0     0     0     13x16x34        NO
+49000      49       0     0     34    15x16x15        NO
+49001      49       0     16    0     8x8x14          NO
+49002      49       0     16    14    8x12x29         YES
+38000      38       15    0     0     9x15x27         NO
+38001      38       8     16    14    7x9x34          NO
+38002      38       15    15    0     6x9x31          YES
+
+VEHICLE 10
+Route: 0 -> 68 -> 64 -> 37 -> 70 -> 0
+Route Length: 140.06
+Load Weight: 63.01 / 100.0
+Load Length: 120.00 / 60
+Packed Items Count: 0
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+(NO FEASIBLE PACKING FOUND FOR THIS ROUTE CONFIGURATION)
+
+VEHICLE 11
+Route: 0 -> 50 -> 24 -> 43 -> 0
+Route Length: 102.47
+Load Weight: 67.00 / 100.0
+Load Length: 49.00 / 60
+Packed Items Count: 7
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+43000      43       0     0     0     8x17x16         NO
+43001      43       0     0     16    9x6x30          NO
+43002      43       0     17    0     5x8x21          NO
+24000      24       0     6     21    8x14x28         NO
+24001      24       9     0     0     13x7x25         NO
+50000      50       9     7     0     12x11x33        NO
+50001      50       0     20    21    7x9x22          NO
+
+VEHICLE 12
+Route: 0 -> 4 -> 48 -> 47 -> 63 -> 17 -> 0
+Route Length: 88.42
+Load Weight: 100.00 / 100.0
+Load Length: 120.00 / 60
+Packed Items Count: 0
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+(NO FEASIBLE PACKING FOUND FOR THIS ROUTE CONFIGURATION)
+
+VEHICLE 13
+Route: 0 -> 67 -> 51 -> 36 -> 29 -> 13 -> 0
+Route Length: 112.09
+Load Weight: 79.00 / 100.0
+Load Length: 59.00 / 60
+Packed Items Count: 10
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+13000      13       0     0     0     12x8x21         NO
+29000      29       0     0     21    12x6x33         NO
+36000      36       0     8     0     14x13x14        NO
+36001      36       0     6     21    6x7x27          NO
+36002      36       0     21    0     6x8x17          NO
+51000      51       12    0     14    10x12x15        NO
+51001      51       12    0     29    8x7x30          NO
+51002      51       0     13    17    6x7x25          NO
+67000      67       12    12    14    11x15x15        NO
+67001      67       6     6     21    6x11x30         NO
+
+VEHICLE 14
+Route: 0 -> 57 -> 53 -> 9 -> 0
+Route Length: 112.47
+Load Weight: 65.00 / 100.0
+Load Length: 60.00 / 60
+Packed Items Count: 4
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+9000       9        0     0     0     11x8x24         NO
+9001       9        0     8     0     9x13x17         YES
+53000      53       0     0     24    7x17x36         NO
+57000      57       7     0     24    15x11x26        YES
+
+VEHICLE 15
+Route: 0 -> 11 -> 46 -> 30 -> 42 -> 0
+Route Length: 136.92
+Load Weight: 97.00 / 100.0
+Load Length: 120.00 / 60
+Packed Items Count: 0
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+(NO FEASIBLE PACKING FOUND FOR THIS ROUTE CONFIGURATION)
+
+VEHICLE 16
+Route: 0 -> 33 -> 44 -> 31 -> 0
+Route Length: 104.29
+Load Weight: 69.01 / 100.0
+Load Length: 57.00 / 60
+Packed Items Count: 7
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+31000      31       0     0     0     8x14x26         NO
+44000      44       0     0     26    10x12x31        NO
+44001      44       0     14    0     10x8x22         NO
+44002      44       0     22    0     12x6x23         NO
+33000      33       0     12    26    8x7x17          NO
+33001      33       10    0     0     14x15x15        YES
+33002      33       10    0     15    14x7x31         YES
+
+VEHICLE 17
+Route: 0 -> 27 -> 15 -> 20 -> 74 -> 2 -> 0
+Route Length: 87.59
+Load Weight: 83.00 / 100.0
+Load Length: 45.00 / 60
+Packed Items Count: 5
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+2000       2        0     0     0     14x6x13         NO
+74000      74       0     6     0     14x12x16        NO
+20000      20       0     0     16    7x16x29         NO
+15000      15       7     0     16    12x9x28         NO
+27000      27       7     9     16    14x14x14        YES
+
+VEHICLE 18
+Route: 0 -> 58 -> 10 -> 55 -> 12 -> 22 -> 0
+Route Length: 157.13
+Load Weight: 82.00 / 100.0
+Load Length: 120.00 / 60
+Packed Items Count: 0
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+(NO FEASIBLE PACKING FOUND FOR THIS ROUTE CONFIGURATION)
+
+VEHICLE 19
+Route: 0 -> 75 -> 71 -> 69 -> 62 -> 41 -> 25 -> 65 -> 0
+Route Length: 205.56
+Load Weight: 87.00 / 100.0
+Load Length: 51.00 / 60
+Packed Items Count: 7
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+65000      65       0     0     0     6x10x17         NO
+25000      25       0     0     17    5x8x34          NO
+41000      41       0     8     17    6x7x27          YES
+62000      62       0     15    17    6x10x26         YES
+69000      69       5     0     17    6x7x33          YES
+71000      71       11    0     0     7x12x14         NO
+75000      75       11    0     14    8x9x20          NO
+
+VEHICLE 20
+Route: 0 -> 1 -> 0
+Route Length: 50.91
+Load Weight: 18.00 / 100.0
+Load Length: 14.00 / 60
+Packed Items Count: 1
+-------------------- ITEM PLACEMENT --------------------
+Item ID    Client   X     Y     Z     Dim(WxHxL)      Fragile
+1000       1        0     0     0     6x8x14          NO
+
+============================================================
