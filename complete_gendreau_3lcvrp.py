@@ -1,3 +1,4 @@
+import argparse
 import math
 import random
 import copy
@@ -19,9 +20,10 @@ class GlobalState:
     SUPPORT_ALPHA = 0.75
 
 class Item:
-    def __init__(self, id: int, client_id: int, w: int, h: int, l: int, weight: float, fragile: bool):
+    def __init__(self, id: int, client_id: int, type_id: str, w: int, h: int, l: int, weight: float, fragile: bool):
         self.id = id
         self.client_id = client_id
+        self.type_id = type_id
         # Dimensions: w=x-axis, h=y-axis, l=z-axis (length)
         self.orig_w, self.orig_h, self.orig_l = w, h, l
         self.weight = weight
@@ -251,7 +253,7 @@ class TabuSearch3L:
         self.tabu_list = {} 
         self.freq_matrix = {} 
 
-    def solve(self, max_iters=500, time_limit=300):
+    def solve(self, max_iters=100, time_limit=3600):
         """
         Executes Tabu Search until max_iters OR time_limit is reached.
         """
@@ -278,9 +280,9 @@ class TabuSearch3L:
             print(f"Warning: Could not construct fully feasible initial solution. Cost: {best_cost:.2f}")
 
         # 2. Tabu Search Loop
-        # for it in range(max_iters):
-        it = -1
-        while True:
+        for it in range(max_iters):
+        # it = -1
+        # while True:
             it += 1
             best_neighbor = None
             best_neighbor_score = float('inf')
@@ -529,8 +531,8 @@ def load_instance_from_file(filepath: str):
                 ref = items_ref.get(t_name)
                 if not ref: continue
                 for _ in range(qty):
-                    unique_id = cid * 1000 + item_counter
-                    new_item = Item(unique_id, cid, ref['w'], ref['h'], ref['l'], ref['mass'], ref['fragile'])
+                    unique_id = f"{cid}_{item_counter}"
+                    new_item = Item(unique_id, cid, t_name, ref['w'], ref['h'], ref['l'], ref['mass'], ref['fragile'])
                     client_items.append(new_item)
                     item_counter += 1
             if cid in customer_positions:
@@ -607,75 +609,253 @@ def append_results_to_csv(instance_file: str, solution: List[Vehicle], calc_time
         
         writer.writerow([instance_name, f"{total_dist}", vehicle_count, f"{fill_rate}", f"{calc_time:.4f}"])
 
+
+def save_solution_txt_v2(
+    out_path: str,
+    instance_name: str,
+    solution: List[Vehicle],
+    elapsed_time: float
+):
+    used_vehicles = [v for v in solution if v.route]
+    total_dist = sum(v.route_length for v in used_vehicles)
+
+    with open(out_path, "w") as f:
+        f.write(f"Name:\t\t\t\t{instance_name}\n")
+        f.write("Problem:\t\t\t3L-CVRP\n")
+        f.write(f"Number_of_used_Vehicles:\t{len(used_vehicles)}\n")
+        f.write(f"Total_Travel_Distance:\t\t{total_dist}\n")
+        f.write(f"Calculation_Time:\t\t{elapsed_time}\n\n")
+
+        for vid, v in enumerate(used_vehicles):
+            PackingEngine.solve_single_vehicle(v, persist_results=True)
+
+            customers = [c.id for c in v.route]
+
+            f.write("-" * 40 + "\n")
+            f.write(f"Tour_Id:\t\t\t{vid}\n")
+            f.write(f"No_of_Customers:\t\t{len(customers)}\n")
+            f.write(f"No_of_Items:\t\t\t{len(v.packed_items)}\n")
+            f.write(
+                "Customer_Sequence:\t\t"
+                + " ".join(map(str, customers)) + "\n\n"
+            )
+
+            f.write(
+                "CustId\tId\tTypeId\tRotated\tx\ty\tz\t"
+                "Length\tWidth\tHeight\tmass\tFragility\n"
+            )
+
+            for it in v.packed_items:
+                f.write(
+                    f"{it.client_id}\t"
+                    f"{it.id}\t"
+                    f"{it.type_id}\t"
+                    f"{0}\t"
+                    f"{it.x}\t{it.y}\t{it.z}\t"
+                    f"{it.l}\t{it.w}\t{it.h}\t"
+                    f"{it.weight}\t"
+                    f"{int(it.fragile)}\n"
+                )
+
+            f.write("\n")
+
+
 # ==============================================================================
 # 6. MAIN EXECUTION
 # ==============================================================================
 
-if __name__ == "__main__":
-    # Default folder is current directory if no argument provided
-    input_path = "."
-    if len(sys.argv) > 1:
-        input_path = sys.argv[1]
+# if __name__ == "__main__":
+#     # Default folder is current directory if no argument provided
+#     input_path = "."
+#     if len(sys.argv) > 1:
+#         input_path = sys.argv[1]
 
-    # Check if input is a directory or a single file
-    files_to_process = []
-    if os.path.isdir(input_path):
-        print(f"Scanning directory: {input_path}")
-        for entry in os.listdir(input_path):
-            if entry.endswith(".txt") and not entry.startswith("solution_"):
-                if not entry.startswith("Overview"):
-                    files_to_process.append(os.path.join(input_path, entry))
-    elif os.path.isfile(input_path):
-        files_to_process.append(input_path)
-    else:
-        print(f"Error: Path {input_path} not found.")
-        sys.exit(1)
+#     # Check if input is a directory or a single file
+#     files_to_process = []
+#     if os.path.isdir(input_path):
+#         print(f"Scanning directory: {input_path}")
+#         for entry in os.listdir(input_path):
+#             if entry.endswith(".txt") and not entry.startswith("solution_"):
+#                 if not entry.startswith("Overview"):
+#                     files_to_process.append(os.path.join(input_path, entry))
+#     elif os.path.isfile(input_path):
+#         files_to_process.append(input_path)
+#     else:
+#         print(f"Error: Path {input_path} not found.")
+#         sys.exit(1)
 
-    files_to_process.sort() # Sort to process in order (e.g. 01, 02, 03)
-    print(f"Found {len(files_to_process)} instances to process.")
-    print("="*60)
+#     files_to_process.sort() # Sort to process in order (e.g. 01, 02, 03)
+#     print(f"Found {len(files_to_process)} instances to process.")
+#     print("="*60)
 
-    # Process each file
-    for instance_file in files_to_process:
-        print(f"\n>>> Processing Instance: {os.path.basename(instance_file)}")
+#     # Process each file
+#     for instance_file in files_to_process:
+#         print(f"\n>>> Processing Instance: {os.path.basename(instance_file)}")
         
-        try:
-            # 1. Load Data
-            depot, clients, file_num_vehicles = load_instance_from_file(instance_file)
-            print(f"    Loaded {len(clients)} clients. Vehicle Capacity: {GlobalState.VEHICLE_CAPACITY}")
+#         try:
+#             # 1. Load Data
+#             depot, clients, file_num_vehicles = load_instance_from_file(instance_file)
+#             print(f"    Loaded {len(clients)} clients. Vehicle Capacity: {GlobalState.VEHICLE_CAPACITY}")
 
-            # 2. Run Algorithm
-            start_time = time.time()
+#             # 2. Run Algorithm
+#             start_time = time.time()
             
-            # Create Solver
-            # Use max(file_num_vehicles, 4) to ensure a minimum fleet size baseline
-            ts = TabuSearch3L(depot, clients, num_vehicles=max(file_num_vehicles, 4))
+#             # Create Solver
+#             # Use max(file_num_vehicles, 4) to ensure a minimum fleet size baseline
+#             ts = TabuSearch3L(depot, clients, num_vehicles=max(file_num_vehicles, 4))
             
-            # Execute with Time Limit (e.g., 60 seconds per instance)
-            if len(clients) <= 25:
-                time_limit = 1800
-            elif len(clients) <= 50:
-                time_limit = 3600
-            else:
-                time_limit = 7200
-            final_solution = ts.solve(max_iters=1000, time_limit=time_limit)
+#             # Execute with Time Limit (e.g., 60 seconds per instance)
+#             if len(clients) <= 25:
+#                 time_limit = 1800
+#             elif len(clients) <= 50:
+#                 time_limit = 3600
+#             else:
+#                 time_limit = 7200
+#             final_solution = ts.solve(max_iters=1000, time_limit=time_limit)
             
-            end_time = time.time()
-            duration = end_time - start_time
-            print(f"    Finished in {duration:.2f} seconds.")
+#             end_time = time.time()
+#             duration = end_time - start_time
+#             print(f"    Finished in {duration:.2f} seconds.")
 
-            # 3. Export Results
-            export_results(final_solution, instance_file)
-            append_results_to_csv(instance_file, final_solution, duration)
+#             # 3. Export Results
+#             export_results(final_solution, instance_file)
+#             append_results_to_csv(instance_file, final_solution, duration)
             
-        except Exception as e:
-            print(f"!!! Error processing {instance_file}: {e}")
-            # Log error to CSV as well for tracking
-            os.makedirs("results", exist_ok=True)
-            with open(os.path.join("results", "results.csv"), mode='a', newline='') as f:
-                writer = csv.writer(f)
-                writer.writerow([os.path.basename(instance_file), "ERROR", "0", "0", "0"])
-            continue
+#         except Exception as e:
+#             print(f"!!! Error processing {instance_file}: {e}")
+#             # Log error to CSV as well for tracking
+#             os.makedirs("results", exist_ok=True)
+#             with open(os.path.join("results", "results.csv"), mode='a', newline='') as f:
+#                 writer = csv.writer(f)
+#                 writer.writerow([os.path.basename(instance_file), "ERROR", "0", "0", "0"])
+#             continue
 
-    print("\n" + "="*60)
-    print("Batch Processing Complete.")
+#     print("\n" + "="*60)
+#     print("Batch Processing Complete.")
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--instances", type=str, default=".", help="folder with instances (.txt)")
+    parser.add_argument("--out", type=str, default="results", help="output folder")
+    parser.add_argument("--time", type=int, default=3600, help="time limit (sec) per run")
+    parser.add_argument("--iter", type=int, default=1000, help="max iterations")
+    parser.add_argument("--repeats", type=int, default=1, help="repeats per instance")
+    parser.add_argument("--start-instance", type=str, default=None, help="resume from instance filename")
+    parser.add_argument("--start-repeat", type=int, default=0, help="resume from repeat index (0-based)")
+    args = parser.parse_args()
+
+    os.makedirs(args.out, exist_ok=True)
+
+    # CSV
+    # csv_path = os.path.join(args.out, "results.csv")
+    csv_path = "output/results.csv"
+    write_header = not os.path.exists(csv_path)
+    csv_file = open(csv_path, "a", newline="")
+    writer = csv.writer(csv_file)
+
+    if write_header:
+        writer.writerow([
+            "instance", "distance", "fill_rate", "calculation_time"
+        ])
+
+    # Collect instance files
+    instance_files = []
+    for fn in sorted(os.listdir(args.instances)):
+        if fn.lower().endswith(".txt") and not fn.lower().startswith("solution") and "overview" not in fn.lower():
+            instance_files.append(fn)
+
+    if args.start_instance is not None:
+        instance_files = [f for f in instance_files if f >= args.start_instance]
+
+    print(f"Found {len(instance_files)} instances.")
+
+    for fn in instance_files:
+        instance_path = os.path.join(args.instances, fn)
+
+        for r in range(args.repeats):
+            if args.start_instance == fn and r < args.start_repeat:
+                continue
+
+            print(f"\n>>> Running {fn}, repeat {r + 1}/{args.repeats}")
+
+            try:
+                depot, clients, file_num_vehicles = load_instance_from_file(instance_path)
+
+                start_time = time.time()
+
+                ts = TabuSearch3L(
+                    depot,
+                    clients,
+                    num_vehicles=max(file_num_vehicles, len(clients))
+                )
+
+                solution = ts.solve(
+                    max_iters=args.iter,
+                    time_limit=args.time
+                )
+
+                elapsed = time.time() - start_time
+
+                if not solution or all(not v.route for v in solution):
+                    raise RuntimeError("NO_SOLUTION")
+
+                # Export solution
+                sol_name = f"{os.path.splitext(fn)[0]}_{r}.txt"
+                sol_path = os.path.join(args.out, sol_name)
+
+                save_solution_txt_v2(
+                    out_path=sol_path,
+                    instance_name=os.path.splitext(fn)[0],
+                    solution=solution,
+                    elapsed_time=elapsed
+                )
+
+                # CSV summary
+                used = [v for v in solution if v.route]
+                total_dist = sum(v.route_length for v in used)
+
+                total_vehicle_vol = len(used) * (
+                    GlobalState.VEHICLE_W *
+                    GlobalState.VEHICLE_H *
+                    GlobalState.VEHICLE_L
+                )
+
+                total_item_vol = sum(
+                    c.total_volume for v in used for c in v.route
+                )
+
+                fill_rate = (
+                    total_item_vol / total_vehicle_vol
+                    if total_vehicle_vol > 0 else 0.0
+                )
+
+                writer.writerow([
+                    fn,
+                    f"{total_dist}",
+                    len(used),
+                    f"{fill_rate}",
+                    f"{elapsed}"
+                ])
+
+                print(f"[DONE] dist={total_dist:.2f}, vehicles={len(used)}, time={elapsed:.2f}s")
+
+            except Exception as e:
+                print(f"[FAIL] {fn}, repeat {r}: {e}")
+
+                writer.writerow([
+                    fn,
+                    "x",
+                    "x",
+                    "x",
+                    "x"
+                ])
+
+                csv_file.flush()
+                continue
+
+    csv_file.close()
+    print("\nBatch processing complete.")
+
+
+if __name__ == "__main__":
+    main()

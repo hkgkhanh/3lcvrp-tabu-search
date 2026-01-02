@@ -1,0 +1,80 @@
+Name:				3l_cvrp02
+Problem:			3L-CVRP
+Number_of_used_Vehicles:	6
+Total_Travel_Distance:		365.341965788742
+Calculation_Time:		13.44692325592041
+
+----------------------------------------
+Tour_Id:			0
+No_of_Customers:		3
+No_of_Items:			5
+Customer_Sequence:		10 2 3
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+3	3_0	Bt4	0	0	0	0	29	13	14	8.0	0
+3	3_1	Bt5	0	0	14	0	22	8	8	8.0	1
+2	2_0	Bt2	0	0	0	29	29	7	10	15.0	0
+2	2_1	Bt3	0	0	10	29	26	5	12	15.0	1
+10	10_0	Bt18	0	7	0	29	19	8	13	5.0	0
+
+----------------------------------------
+Tour_Id:			1
+No_of_Customers:		3
+No_of_Items:			4
+Customer_Sequence:		11 9 5
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+5	5_0	Bt8	0	0	0	0	33	12	18	21.0	0
+9	9_0	Bt16	0	0	18	0	22	15	12	5.5	1
+9	9_1	Bt17	0	0	0	33	25	9	6	5.5	1
+11	11_0	Bt19	0	9	0	33	21	11	6	19.0	0
+
+----------------------------------------
+Tour_Id:			2
+No_of_Customers:		3
+No_of_Items:			5
+Customer_Sequence:		13 4 15
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+15	15_0	Bt26	0	0	0	0	13	14	18	10.0	0
+4	4_0	Bt6	0	0	0	13	31	13	11	4.5	0
+4	4_1	Bt7	0	0	11	13	18	6	13	4.5	1
+13	13_0	Bt22	0	6	11	13	23	9	14	11.5	0
+13	13_1	Bt23	0	13	0	13	34	9	9	11.5	1
+
+----------------------------------------
+Tour_Id:			3
+No_of_Customers:		2
+No_of_Items:			5
+Customer_Sequence:		6 14
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+14	14_0	Bt24	0	0	0	0	27	6	13	10.5	0
+14	14_1	Bt25	0	6	0	0	35	10	14	10.5	1
+6	6_0	Bt9	0	0	0	35	20	13	8	5.0	0
+6	6_1	Bt10	0	16	0	0	32	8	8	5.0	0
+6	6_2	Bt11	0	6	14	0	29	11	12	5.0	1
+
+----------------------------------------
+Tour_Id:			4
+No_of_Customers:		3
+No_of_Items:			5
+Customer_Sequence:		1 8 7
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+7	7_0	Bt12	0	0	0	0	13	6	16	9.5	0
+7	7_1	Bt13	0	0	0	13	32	6	15	9.5	1
+8	8_0	Bt14	0	6	0	0	17	14	14	11.5	0
+8	8_1	Bt15	0	6	14	0	21	11	10	11.5	1
+1	1_0	Bt1	0	6	0	17	22	11	11	7.0	0
+
+----------------------------------------
+Tour_Id:			5
+No_of_Customers:		1
+No_of_Items:			2
+Customer_Sequence:		12
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+12	12_0	Bt20	0	0	0	0	28	12	15	14.5	0
+12	12_1	Bt21	0	0	15	0	15	14	7	14.5	1
+

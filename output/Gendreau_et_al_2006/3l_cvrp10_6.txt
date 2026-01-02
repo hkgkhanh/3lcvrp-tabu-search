@@ -1,0 +1,139 @@
+Name:				3l_cvrp10
+Problem:			3L-CVRP
+Number_of_used_Vehicles:	10
+Total_Travel_Distance:		1715.9810952933913
+Calculation_Time:		125.43655347824097
+
+----------------------------------------
+Tour_Id:			0
+No_of_Customers:		2
+No_of_Items:			5
+Customer_Sequence:		18 22
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+22	22_0	Bt46	0	0	0	0	25	14	16	50.0	0
+22	22_1	Bt47	0	0	16	0	22	12	12	50.0	0
+18	18_0	Bt38	0	0	0	25	31	15	13	50.0	0
+18	18_1	Bt39	0	0	13	25	33	13	9	50.0	0
+18	18_2	Bt40	0	15	0	0	32	6	17	50.0	0
+
+----------------------------------------
+Tour_Id:			1
+No_of_Customers:		2
+No_of_Items:			5
+Customer_Sequence:		9 7
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+7	7_0	Bt15	0	0	0	0	30	15	17	75.0	0
+7	7_1	Bt16	0	0	17	0	30	12	7	75.0	1
+9	9_0	Bt19	0	15	0	0	32	6	17	100.0	0
+9	9_1	Bt20	0	0	0	30	29	8	12	100.0	0
+9	9_2	Bt21	0	12	17	0	34	11	12	100.0	1
+
+----------------------------------------
+Tour_Id:			2
+No_of_Customers:		2
+No_of_Items:			6
+Customer_Sequence:		5 1
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+1	1_0	Bt1	0	0	0	0	23	11	15	100.0	0
+1	1_1	Bt2	0	0	15	0	25	7	6	100.0	0
+1	1_2	Bt3	0	0	0	23	34	12	11	100.0	1
+5	5_0	Bt9	0	12	0	0	34	13	7	66.67	0
+5	5_1	Bt10	0	12	7	0	33	10	8	66.67	0
+5	5_2	Bt11	0	0	11	33	18	15	15	66.67	1
+
+----------------------------------------
+Tour_Id:			3
+No_of_Customers:		3
+No_of_Items:			7
+Customer_Sequence:		28 10 13
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+13	13_0	Bt30	0	0	0	0	34	8	17	150.0	0
+10	10_0	Bt22	0	0	0	34	26	10	17	33.33	0
+10	10_1	Bt23	0	8	0	0	16	10	16	33.33	0
+10	10_2	Bt24	0	0	17	0	23	8	12	33.33	0
+28	28_0	Bt57	0	10	0	16	25	15	14	50.0	0
+28	28_1	Bt58	0	10	14	16	18	8	16	50.0	0
+28	28_2	Bt59	0	0	17	34	21	13	7	50.0	0
+
+----------------------------------------
+Tour_Id:			4
+No_of_Customers:		2
+No_of_Items:			5
+Customer_Sequence:		8 29
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+29	29_0	Bt60	0	0	0	0	18	15	15	333.33	0
+29	29_1	Bt61	0	0	0	18	28	7	11	333.33	0
+29	29_2	Bt62	0	0	11	18	26	9	8	333.33	0
+8	8_0	Bt17	0	7	0	18	30	15	11	225.0	0
+8	8_1	Bt18	0	9	11	18	23	9	18	225.0	0
+
+----------------------------------------
+Tour_Id:			5
+No_of_Customers:		3
+No_of_Items:			0
+Customer_Sequence:		12 6 24
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+
+----------------------------------------
+Tour_Id:			6
+No_of_Customers:		2
+No_of_Items:			5
+Customer_Sequence:		20 3
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+3	3_0	Bt6	0	0	0	0	13	13	18	62.5	0
+3	3_1	Bt7	0	0	0	13	34	5	17	62.5	0
+20	20_0	Bt42	0	5	0	13	25	7	14	100.0	0
+20	20_1	Bt43	0	0	17	13	30	6	6	100.0	0
+20	20_2	Bt44	0	12	0	13	34	8	9	100.0	1
+
+----------------------------------------
+Tour_Id:			7
+No_of_Customers:		4
+No_of_Items:			7
+Customer_Sequence:		17 2 27 26
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+26	26_0	Bt54	0	0	0	0	25	11	9	150.0	0
+26	26_1	Bt55	0	0	9	0	22	5	11	150.0	1
+27	27_0	Bt56	0	0	0	25	22	14	16	100.0	0
+2	2_0	Bt4	0	0	16	22	28	11	12	1550.0	0
+2	2_1	Bt5	0	14	0	0	15	7	9	1550.0	0
+17	17_0	Bt36	0	14	0	15	30	8	13	50.0	0
+17	17_1	Bt37	0	14	13	15	34	5	9	50.0	0
+
+----------------------------------------
+Tour_Id:			8
+No_of_Customers:		4
+No_of_Items:			7
+Customer_Sequence:		25 11 15 16
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+16	16_0	Bt35	0	0	0	0	24	9	14	150.0	1
+15	15_0	Bt33	0	0	0	24	21	9	13	275.0	0
+15	15_1	Bt34	0	0	13	24	17	9	11	275.0	0
+11	11_0	Bt25	0	9	0	0	24	8	17	475.0	1
+11	11_1	Bt26	0	9	17	0	22	6	9	475.0	1
+25	25_0	Bt52	0	9	0	24	15	7	13	400.0	0
+25	25_1	Bt53	0	9	0	39	13	14	18	400.0	1
+
+----------------------------------------
+Tour_Id:			9
+No_of_Customers:		5
+No_of_Items:			6
+Customer_Sequence:		23 14 21 19 4
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+4	4_0	Bt8	0	0	0	0	16	6	13	100.0	0
+19	19_0	Bt41	0	0	0	16	18	11	17	400.0	0
+21	21_0	Bt45	0	0	17	16	15	8	13	1500.0	0
+14	14_0	Bt31	0	11	0	0	34	9	8	75.0	0
+14	14_1	Bt32	0	11	8	0	21	10	6	75.0	0
+23	23_0	Bt48	0	11	14	0	14	7	15	300.0	1
+
