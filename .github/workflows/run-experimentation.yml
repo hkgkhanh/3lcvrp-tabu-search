@@ -1,0 +1,51 @@
+name: Run Experimentation
+
+on:
+  # schedule:
+  #   - cron: '0 0 * * 3'  # every Wednesday at 00:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run-experiment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: 3lcvrp-20251
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run experiment
+        run: |
+          python complete_gendreau_3lcvrp.py \
+            --instances dataset/Semi-Trailer_Truck_2021 \
+            --out output/Semi-Trailer_Truck_2021 \
+            --time 3600 \
+            --iter 100 \
+            --repeats 10
+
+      - name: Commit and push results
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            DATE=$(date +"%d/%m/%Y")
+            git commit -m "Run experiment on ${DATE}"
+            git push
+          fi
