@@ -6,6 +6,8 @@ INPUT_CSV = "output/results.csv"
 EPSILON = 0.05  # 5%
 
 
+failed = ["3l_cvrp07.txt", "3l_cvrp19.txt", "3l_cvrp20.txt", "3l_cvrp21.txt", "3l_cvrp22.txt", "3l_cvrp24.txt", "3l_cvrp25.txt", "3l_cvrp26.txt", "3l_cvrp27.txt"]
+
 def coefficient_of_variation(values):
     if not values:
         return 0.0
@@ -33,10 +35,15 @@ def main():
 
     total_runs = 0
     successful_runs = 0
+    avg_cv = 0
+    cv_count = 0
 
     print(f"Threshold: {EPSILON * 100:.1f}% of best observed solution\n")
 
     for instance, dists in sorted(distances.items()):
+        if instance in failed:
+            continue
+
         best = min(dists)
         threshold = best * (1.0 + EPSILON)
 
@@ -46,6 +53,8 @@ def main():
         successful_runs += count_good
 
         cv = coefficient_of_variation(dists)
+        avg_cv += cv
+        cv_count += 1
 
         print(
             f"{instance}: "
@@ -59,6 +68,7 @@ def main():
     print("\n========== SUMMARY ==========")
     print(f"Successful runs: {successful_runs}/{total_runs}")
     print(f"Success ratio: {ratio:.4f}")
+    print(f"avg CV = {(avg_cv/cv_count)*100:.4f}")
 
 
 if __name__ == "__main__":
