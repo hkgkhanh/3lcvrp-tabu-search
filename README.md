@@ -18,14 +18,7 @@ Algorithm implementation of [A Tabu Search Algorithm for a Routing and Container
 Example:
 
     ```
-    python complete_gendreau_3lcvrp.py
-        --instances dataset/Gendreau_et_al_2006
-        --out output/Gendreau_et_al_2006
-        --time 3600
-        --iter 100
-        --repeats 1
-        --start-instance 3l_cvrp01.txt
-        --start-repeat 0
+    python complete_gendreau_3lcvrp.py --instances dataset/Gendreau_et_al_2006 --out output/Gendreau_et_al_2006 --time 3600 --iter 100 --repeats 1 --start-instance 3l_cvrp01.txt --start-repeat 0
     ```
 
 ## References

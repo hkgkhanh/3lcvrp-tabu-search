@@ -196,26 +196,27 @@ class PackingEngine:
 
 class RoutingEngine:
     @staticmethod
-    def dist(c1: Client, c2: Client) -> float:
-        return math.sqrt((c1.x - c2.x)**2 + (c1.y - c2.y)**2)
+    def dist(c1: Client, c2: Client, dist_matrix: List[List[float]]) -> float:
+        # return math.sqrt((c1.x - c2.x)**2 + (c1.y - c2.y)**2)
+        return dist_matrix[c1.id][c2.id]
 
     @staticmethod
-    def calculate_route_length(route: List[Client], depot: Client) -> float:
+    def calculate_route_length(route: List[Client], depot: Client, dist_matrix: List[List[float]]) -> float:
         if not route: return 0.0
-        d = RoutingEngine.dist(depot, route[0])
+        d = RoutingEngine.dist(depot, route[0], dist_matrix)
         for i in range(len(route)-1):
-            d += RoutingEngine.dist(route[i], route[i+1])
-        d += RoutingEngine.dist(route[-1], depot)
+            d += RoutingEngine.dist(route[i], route[i+1], dist_matrix)
+        d += RoutingEngine.dist(route[-1], depot, dist_matrix)
         return d
 
     @staticmethod
-    def optimize_route(route: List[Client], depot: Client) -> Tuple[List[Client], float]:
+    def optimize_route(route: List[Client], depot: Client, dist_matrix: List[List[float]]) -> Tuple[List[Client], float]:
         if len(route) <= 2:
-            return route, RoutingEngine.calculate_route_length(route, depot)
+            return route, RoutingEngine.calculate_route_length(route, depot, dist_matrix)
 
         improved = True
         best_route = list(route)
-        best_len = RoutingEngine.calculate_route_length(best_route, depot)
+        best_len = RoutingEngine.calculate_route_length(best_route, depot, dist_matrix)
         
         while improved:
             improved = False
@@ -224,7 +225,7 @@ class RoutingEngine:
                     if j - i == 1: continue
                     new_route = best_route[:]
                     new_route[i:j] = reversed(best_route[i:j])
-                    l = RoutingEngine.calculate_route_length(new_route, depot)
+                    l = RoutingEngine.calculate_route_length(new_route, depot, dist_matrix)
                     if l < best_len - 0.001:
                         best_route = new_route
                         best_len = l
@@ -239,13 +240,15 @@ class RoutingEngine:
 # ==============================================================================
 
 class TabuSearch3L:
-    def __init__(self, depot: Client, clients: List[Client], num_vehicles: int):
+    def __init__(self, depot: Client, clients: List[Client], num_vehicles: int, dist_matrix: List[List[float]]):
         self.depot = depot
         self.clients = clients
         self.min_vehicles = num_vehicles 
-        self.vehicles = [] 
+        self.vehicles = []
+        self.dist_matrix = dist_matrix
         
-        avg_dist = sum(RoutingEngine.dist(depot, c) for c in clients) / len(clients) if clients else 10
+        # avg_dist = sum(RoutingEngine.dist(depot, c) for c in clients) / len(clients) if clients else 10
+        avg_dist = sum(c for c in dist_matrix[0]) / len(clients) if clients else 10
         self.alpha = 20 * avg_dist / GlobalState.VEHICLE_CAPACITY 
         self.beta = 20 * avg_dist / GlobalState.VEHICLE_L         
         self.gamma = math.sqrt(2 * len(clients) * num_vehicles) 
@@ -314,7 +317,7 @@ class TabuSearch3L:
                     
                     for v_idx in [source_v_idx, target_v_idx]:
                         neighbor_sol[v_idx].route, neighbor_sol[v_idx].route_length = \
-                            RoutingEngine.optimize_route(neighbor_sol[v_idx].route, self.depot)
+                            RoutingEngine.optimize_route(neighbor_sol[v_idx].route, self.depot, self.dist_matrix)
                     
                     score = self._calculate_score(neighbor_sol, client.id, target_v_idx)
                     
@@ -383,9 +386,9 @@ class TabuSearch3L:
                 v.route.pop() 
                 
                 if lam <= GlobalState.VEHICLE_L:
-                    current_dist = RoutingEngine.calculate_route_length(v.route, self.depot)
+                    current_dist = RoutingEngine.calculate_route_length(v.route, self.depot, self.dist_matrix)
                     v.route.append(c)
-                    new_dist = RoutingEngine.calculate_route_length(v.route, self.depot)
+                    new_dist = RoutingEngine.calculate_route_length(v.route, self.depot, self.dist_matrix)
                     v.route.pop()
                     
                     increase = new_dist - current_dist
@@ -397,7 +400,7 @@ class TabuSearch3L:
                 v = sol[best_v_idx]
                 v.route.append(c)
                 v.total_weight += c.total_weight
-                v.route, v.route_length = RoutingEngine.optimize_route(v.route, self.depot)
+                v.route, v.route_length = RoutingEngine.optimize_route(v.route, self.depot, self.dist_matrix)
                 inserted = True
             
             if not inserted:
@@ -405,7 +408,7 @@ class TabuSearch3L:
                 new_v = Vehicle(new_v_idx)
                 new_v.route.append(c)
                 new_v.total_weight += c.total_weight
-                new_v.route, new_v.route_length = RoutingEngine.optimize_route(new_v.route, self.depot)
+                new_v.route, new_v.route_length = RoutingEngine.optimize_route(new_v.route, self.depot, self.dist_matrix)
                 sol.append(new_v)
 
         sol = [v for v in sol if v.route]
@@ -458,7 +461,8 @@ def load_instance_from_file(filepath: str):
     items_ref = {}
     clients_list = []
     customer_positions = {}
-    num_vehicles = 5 
+    num_vehicles = 5
+    dist_matrix = []
     
     with open(filepath, 'r') as f:
         lines = [line.strip() for line in f if line.strip()]
@@ -482,6 +486,10 @@ def load_instance_from_file(filepath: str):
         elif line == "DEMANDS PER CUSTOMER":
             current_section = "DEMANDS"
             i += 2 
+            continue
+        elif line == "DISTANCE MATRIX":
+            current_section = "DISTANCE MATRIX"
+            i += 1
             continue
 
         if current_section is None:
@@ -538,8 +546,13 @@ def load_instance_from_file(filepath: str):
             if cid in customer_positions:
                 cx, cy = customer_positions[cid]
                 clients_list.append(Client(cid, cx, cy, client_items))
+        
+        elif current_section == "DISTANCE MATRIX":
+            parts = line.split()
+            dist_matrix.append([float(x) for x in parts])
+
         i += 1
-    return depot, clients_list, num_vehicles
+    return depot, clients_list, num_vehicles, dist_matrix
 
 def export_results(solution: List[Vehicle], instance_file: str):
     os.makedirs("results", exist_ok=True)
@@ -779,14 +792,15 @@ def main():
             print(f"\n>>> Running {fn}, repeat {r + 1}/{args.repeats}")
 
             try:
-                depot, clients, file_num_vehicles = load_instance_from_file(instance_path)
+                depot, clients, file_num_vehicles, dist_matrix = load_instance_from_file(instance_path)
 
                 start_time = time.time()
 
                 ts = TabuSearch3L(
                     depot,
                     clients,
-                    num_vehicles=max(file_num_vehicles, len(clients))
+                    num_vehicles=max(file_num_vehicles, len(clients)),
+                    dist_matrix=dist_matrix
                 )
 
                 solution = ts.solve(
