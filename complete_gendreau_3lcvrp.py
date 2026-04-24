@@ -552,6 +552,13 @@ def load_instance_from_file(filepath: str):
             dist_matrix.append([float(x) for x in parts])
 
         i += 1
+    if len(dist_matrix) == 0:
+        all_nodes = [depot] + clients_list
+        for i in range(len(all_nodes)):
+            dist_matrix.append([])
+            for j in range(len(all_nodes)):
+                dist_matrix[-1].append(math.sqrt((all_nodes[i].x - all_nodes[j].x)**2 + (all_nodes[i].y - all_nodes[j].y)**2))
+
     return depot, clients_list, num_vehicles, dist_matrix
 
 def export_results(solution: List[Vehicle], instance_file: str):
