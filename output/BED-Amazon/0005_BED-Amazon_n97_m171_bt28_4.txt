@@ -1,0 +1,76 @@
+Name:				0005_BED-Amazon_n97_m171_bt28
+Problem:			3L-CVRP
+Number_of_used_Vehicles:	6
+Total_Travel_Distance:		25097.499999999996
+Calculation_Time:		3712.3347985744476
+
+----------------------------------------
+Tour_Id:			0
+No_of_Customers:		6
+No_of_Items:			0
+Customer_Sequence:		43 35 54 12 42 86
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+
+----------------------------------------
+Tour_Id:			1
+No_of_Customers:		7
+No_of_Items:			0
+Customer_Sequence:		41 8 88 75 64 31 26
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+
+----------------------------------------
+Tour_Id:			2
+No_of_Customers:		11
+No_of_Items:			0
+Customer_Sequence:		4 59 33 73 21 89 77 10 50 38 16
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+
+----------------------------------------
+Tour_Id:			3
+No_of_Customers:		18
+No_of_Items:			0
+Customer_Sequence:		81 85 11 22 6 55 62 71 95 84 65 23 66 76 24 69 32 7
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+
+----------------------------------------
+Tour_Id:			4
+No_of_Customers:		34
+No_of_Items:			0
+Customer_Sequence:		51 9 15 46 92 80 30 2 37 44 25 48 17 34 40 27 87 56 68 3 39 67 1 57 13 19 28 63 94 5 82 45 52 49
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+
+----------------------------------------
+Tour_Id:			5
+No_of_Customers:		21
+No_of_Items:			22
+Customer_Sequence:		14 58 79 97 96 83 93 61 53 91 72 29 74 90 78 18 47 36 60 70 20
+
+CustId	Id	TypeId	Rotated	x	y	z	Length	Width	Height	mass	Fragility
+20	20_0	Bt2	0	0	0	0	18	12	5	2.15	1
+70	70_0	Bt6	0	0	5	0	15	11	16	0.7	1
+60	60_0	Bt4	0	0	0	18	23	15	4	4.7	1
+36	36_0	Bt6	0	0	21	0	15	11	16	0.7	1
+47	47_0	Bt3	0	0	4	18	21	14	4	1.9	1
+18	18_0	Bt3	0	0	8	15	21	14	4	1.9	1
+78	78_0	Bt3	0	0	12	15	21	14	4	1.9	1
+90	90_0	Bt6	0	0	37	0	15	11	16	0.7	1
+74	74_0	Bt4	0	0	16	15	23	15	4	4.7	1
+29	29_0	Bt3	0	0	20	15	21	14	4	1.9	1
+72	72_0	Bt4	0	0	24	15	23	15	4	4.7	1
+91	91_0	Bt3	0	0	28	15	21	14	4	1.9	1
+53	53_0	Bt3	0	0	32	15	21	14	4	1.9	1
+61	61_0	Bt4	0	0	36	15	23	15	4	4.7	1
+93	93_0	Bt4	0	0	40	15	23	15	4	4.7	1
+83	83_0	Bt4	0	0	44	15	23	15	4	4.7	1
+96	96_0	Bt4	0	0	48	15	23	15	4	4.7	1
+97	97_0	Bt6	0	0	53	0	15	11	16	0.7	1
+79	79_0	Bt4	0	0	52	15	23	15	4	4.7	1
+58	58_0	Bt4	0	0	56	15	23	15	4	4.7	1
+14	14_0	Bt4	0	0	60	15	23	15	4	4.7	1
+14	14_1	Bt3	0	0	64	15	21	14	4	1.9	1
+
